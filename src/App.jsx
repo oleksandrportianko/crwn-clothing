@@ -1,35 +1,46 @@
 import './App.css';
 
 function App() {
-  return (
-    <div className="app-container">
-      <div className='category-container'>
-         <img src="#" alt="" />
-         <h2>Hats</h2>
-         <p>Shop Now</p>   
-      </div> 
-      <div className='category-container'>
-         <img src="#" alt="" />
-         <h2>Jackets</h2>
-         <p>Shop Now</p>   
-      </div> 
-      <div className='category-container'>
-         <img src="#" alt="" />
-         <h2>Sneakers</h2>
-         <p>Shop Now</p>   
-      </div> 
-      <div className='category-container'>
-         <img src="#" alt="" />
-         <h2>Womens</h2>
-         <p>Shop Now</p>   
-      </div> 
-      <div className='category-container'>
-         <img src="#" alt="" />
-         <h2>Mens</h2>
-         <p>Shop Now</p>   
-      </div> 
-    </div>
-  );
+
+   const categories = [
+      {
+         id: 1,
+         title: 'Hats',
+      },
+      {
+         id: 2,
+         title: 'Jackets',
+      },
+      {
+         id: 3,
+         title: 'Sneakers',
+      },
+      {
+         id: 4,
+         title: 'Womens',
+      },
+      {
+         id: 5,
+         title: 'Mens',
+      }
+   ]
+
+
+   return (
+      <div className="app-container">
+         {
+            categories.map((category) => {
+               return (
+                  <div className='category-container' key={category.id}>
+                     <img src="#" alt="" />
+                     <h2>{category.title}</h2>
+                     <p>Shop Now</p>
+                  </div>
+               )
+            })
+         }
+      </div>
+   );
 }
 
 export default App;
