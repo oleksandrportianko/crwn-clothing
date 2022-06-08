@@ -1,14 +1,18 @@
 import React, { Fragment } from 'react'
 import { Link } from 'react-router-dom'
+import logoSvg from '../../assets/logo.svg'
+import './Navigation.scss'
 
 const Navigation = () => {
    return (
       <Fragment>
-         <div className='logo-container'>
-         <Link to='/'>LOGO</Link>
-         </div>
-         <div className='mav-links-container'>
-            <Link to='/shop'>Shop</Link>
+         <div className='navigation'>
+               <Link className='logo-container' to='/'>
+                  <img src={logoSvg} alt="" />
+               </Link>
+            <div className='nav-links-container'>
+               <Link className='nav-link' to='/shop'>Shop</Link>
+            </div>
          </div>
       </Fragment>
    )
