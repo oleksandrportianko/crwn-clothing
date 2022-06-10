@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { defaultFormSignUpFields } from '../../utils/variables/defaultVariables'
+import { createDocumentUserFromAuth, userAuthCreatedWithEmailAndPassword } from '../../utils/firebase/firebase'
 import './SignUpForm.scss'
 
 const SignUpForm = () => {
@@ -12,8 +13,19 @@ const SignUpForm = () => {
       console.log(formFields)
    }
 
-   const submitSignUpForm = () => {
-      return 0
+   const resetSignUpForm = () => {
+      setFormFields(defaultFormSignUpFields)
+   }
+
+   const submitSignUpForm = async (event) => {
+      event.preventDefault();
+
+      if (password !== confirmPassword) return;
+
+      const { user } = await userAuthCreatedWithEmailAndPassword(email, password)
+      const result = await createDocumentUserFromAuth(user, { displayName })
+      console.log(result)
+      resetSignUpForm()
    }
 
    return (
@@ -27,7 +39,7 @@ const SignUpForm = () => {
             <label>Password</label>
             <input type="password" onChange={changeValue} required value={password} name='password' />
             <label>Confirm password</label>
-            <input type="text" onChange={changeValue} required value={confirmPassword} name='confirmPassword' />
+            <input type="password" onChange={changeValue} required value={confirmPassword} name='confirmPassword' />
             <button type='submit'>Sign up</button>
          </form>
       </div>
