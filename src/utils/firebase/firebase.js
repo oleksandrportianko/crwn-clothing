@@ -1,5 +1,5 @@
 import { initializeApp } from "firebase/app";
-import { signInWithPopup, getAuth, GoogleAuthProvider, createUserWithEmailAndPassword } from 'firebase/auth'
+import { signInWithPopup, getAuth, GoogleAuthProvider, createUserWithEmailAndPassword, signInWithEmailAndPassword } from 'firebase/auth'
 import { getFirestore, doc, getDoc, setDoc } from 'firebase/firestore'
 
 const firebaseConfig = {
@@ -50,6 +50,16 @@ export const userAuthCreatedWithEmailAndPassword = async (email, password) => {
 
    try {
       return createUserWithEmailAndPassword(auth, email, password)
+   } catch (error) {
+      console.log(error.message)
+   }
+}
+
+export const signInAuthWithEmailAndPassword = async (email, password) => {
+   if (!email || !password) return;
+
+   try {
+      return signInWithEmailAndPassword(auth, email, password)
    } catch (error) {
       console.log(error.message)
    }

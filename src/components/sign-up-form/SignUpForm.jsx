@@ -24,21 +24,26 @@ const SignUpForm = () => {
 
       if (password !== confirmPassword) return;
 
-      const { user } = await userAuthCreatedWithEmailAndPassword(email, password)
-      const result = await createDocumentUserFromAuth(user, { displayName })
-      console.log(result)
-      resetSignUpForm()
+      try {
+         const { user } = await userAuthCreatedWithEmailAndPassword(email, password)
+         const result = await createDocumentUserFromAuth(user, { displayName })
+         console.log(result)
+         resetSignUpForm()
+      } catch (error) {
+         console.log(error.message)
+      }
    }
 
    return (
-      <div>
-         <h1>Sign up form with display name and password</h1>
+      <div className='sign-up-container'>
+         <h2>Don`t have an account?</h2>
+         <span>Sign up with email and password</span>
          <form onSubmit={submitSignUpForm}>
             <FormInput label='Display name' type="text" onChange={changeValue} required value={displayName} name='displayName' />
             <FormInput label='Email' type="email" onChange={changeValue} required value={email} name='email' />
             <FormInput label='Password' type="password" onChange={changeValue} required value={password} name='password' />
             <FormInput label='Confirm password' type="password" onChange={changeValue} required value={confirmPassword} name='confirmPassword' />
-            <Button type='submit' children='Sign up' />
+            <Button type='submit'>Sign up</Button>
          </form>
       </div>
    )

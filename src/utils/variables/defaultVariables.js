@@ -5,6 +5,11 @@ export const defaultFormSignUpFields = {
    confirmPassword: ''
 }
 
+export const defaultFormSignInFields = {
+   email: '',
+   password: '',
+}
+
 export const buttonVariables = {
    google: 'google-sign-in',
    inverted: 'inverted'
