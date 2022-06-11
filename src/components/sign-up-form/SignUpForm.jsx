@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { defaultFormSignUpFields } from '../../utils/variables/defaultVariables'
 import { createDocumentUserFromAuth, userAuthCreatedWithEmailAndPassword } from '../../utils/firebase/firebase'
 import './SignUpForm.scss'
+import FormInput from '../form-input/FormInput'
 
 const SignUpForm = () => {
    const [formFields, setFormFields] = useState(defaultFormSignUpFields)
@@ -32,14 +33,10 @@ const SignUpForm = () => {
       <div>
          <h1>Sign up form with display name and password</h1>
          <form onSubmit={submitSignUpForm}>
-            <label>Display name</label>
-            <input type="text" onChange={changeValue} required value={displayName} name='displayName' />
-            <label>Email</label>
-            <input type="email" onChange={changeValue} required value={email} name='email' />
-            <label>Password</label>
-            <input type="password" onChange={changeValue} required value={password} name='password' />
-            <label>Confirm password</label>
-            <input type="password" onChange={changeValue} required value={confirmPassword} name='confirmPassword' />
+            <FormInput label='Display name' type="text" onChange={changeValue} required value={displayName} name='displayName' />
+            <FormInput label='Email' type="email" onChange={changeValue} required value={email} name='email' />
+            <FormInput label='Password' type="password" onChange={changeValue} required value={password} name='password' />
+            <FormInput label='Confirm password' type="password" onChange={changeValue} required value={confirmPassword} name='confirmPassword' />
             <button type='submit'>Sign up</button>
          </form>
       </div>
