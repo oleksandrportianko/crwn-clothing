@@ -6,10 +6,7 @@ import './Authentication.scss'
 const SignInPage = () => {
 
    return (
-      <div>
-         <div>
-            Sign In Page
-         </div>
+      <div className='autentication-container'>
          <SignInForm /> 
          <SignUpForm />
       </div>

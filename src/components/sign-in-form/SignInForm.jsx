@@ -31,22 +31,31 @@ const SignInForm = () => {
       try {
          const result = await signInAuthWithEmailAndPassword(email, password)
          console.log(result)
+         resetSignInForm()
       } catch (error) {
-         console.log(error.message)
+         switch(error.code) {
+            case 'auth/user-not-found':
+               alert('user not found')
+               break;
+            case 'auth/wrong-password':
+               alert('wrong password')
+               break;
+            default:
+               alert(error)
+         }
       }
-      resetSignInForm()
    }
 
    return (
       <div className='sign-in-container'>
          <h2>Already have an account?</h2>
-         <span>Sign in with email and password</span>
+         <span>Sign in with your email and password</span>
          <form onSubmit={submitSignInForm}>
             <FormInput label='Email' type="email" onChange={changeValue} required value={email} name='email' />
             <FormInput label='Password' type="password" onChange={changeValue} required value={password} name='password' />
             <div className='buttons-container'>
                <Button type='submit'>Sign in</Button>
-               <Button buttonType='google' onClick={signInWithGoogle} >Google sign in</Button>
+               <Button type='button' buttonType='google' onClick={signInWithGoogle} >Google sign in</Button>
             </div>
          </form>
       </div>
