@@ -2,7 +2,7 @@ import React, { Fragment } from 'react'
 import { Route, Routes } from 'react-router-dom'
 import HomePage from './pages/home/HomePage'
 import Navigation from './components/navigation/Navigation'
-import AuthenticationPage from './pages/authentication/Authentication'
+import AuthenticationPage from './pages/authentication/AuthenticationPage'
 
 const App = () => {
    return (
