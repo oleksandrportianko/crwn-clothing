@@ -1,10 +1,9 @@
 import React from 'react'
 import SignUpForm from '../../components/sign-up-form/SignUpForm'
 import SignInForm from '../../components/sign-in-form/SignInForm'
-import './Authentication.scss'
+import './AuthenticationPage.scss'
 
-const SignInPage = () => {
-
+const AuthenticationPage = () => {
    return (
       <div className='autentication-container'>
          <SignInForm /> 
@@ -13,4 +12,4 @@ const SignInPage = () => {
    )
 }
 
-export default SignInPage
+export default AuthenticationPage

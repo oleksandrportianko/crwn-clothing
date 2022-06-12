@@ -2,7 +2,7 @@ import React, { Fragment } from 'react'
 import { Route, Routes } from 'react-router-dom'
 import HomePage from './pages/home/HomePage'
 import Navigation from './components/navigation/Navigation'
-import Authentication from './pages/authentication/Authentication'
+import AuthenticationPage from './pages/authentication/Authentication'
 
 const App = () => {
    return (
@@ -12,7 +12,7 @@ const App = () => {
          </div>
          <Routes>
             <Route path='/' element={<HomePage />} />
-            <Route path='/auth' element={<Authentication />} />
+            <Route path='/auth' element={<AuthenticationPage />} />
          </Routes>
       </Fragment>
    )
