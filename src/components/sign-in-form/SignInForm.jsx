@@ -14,7 +14,6 @@ const SignInForm = () => {
    const changeValue = (event) => {
       const { name, value } = event.target;
       setFormFields({ ...formFields, [name]: value })
-      console.log(formFields)
    }
 
    const resetSignInForm = () => {
@@ -23,7 +22,6 @@ const SignInForm = () => {
 
    const signInWithGoogle = async () => {
       const result = await signInWithGooglePopup()
-      console.log(result)
       createDocumentUserFromAuth(result.user)
    }
 
