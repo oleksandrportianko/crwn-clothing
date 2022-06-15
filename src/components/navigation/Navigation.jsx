@@ -6,9 +6,7 @@ import logoSvg from '../../assets/logo.svg'
 import './Navigation.scss'
 
 const Navigation = () => {
-
    const { currentUser, setCurrentUser } = useContext(UserContext)
-   console.log(currentUser)
 
    const signOutHandler = async () => {
       await signOutUser()
