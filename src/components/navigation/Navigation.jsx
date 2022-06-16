@@ -2,6 +2,8 @@ import React, { Fragment, useContext } from 'react'
 import { Link } from 'react-router-dom'
 import { UserContext } from '../../contexts/UserContext'
 import { signOutUser } from '../../utils/firebase/firebase'
+import CartDropdown from '../cart-dropdown/CartDropdown'
+import CartIcon from '../cart-icon/CartIcon'
 import logoSvg from '../../assets/logo.svg'
 import './Navigation.scss'
 
@@ -22,7 +24,9 @@ const Navigation = () => {
                      :
                      <Link className='nav-link' to='/auth'>Sign in</Link>
                }
+               <CartIcon />
             </div>
+            <CartDropdown />
          </div>
       </Fragment>
    )
