@@ -9,8 +9,8 @@ const ShopPage = () => {
    return (
       <div className='products-container'>
          { 
-            products && products.map(products => (
-               <ProductCard key={products.id} products={products} />
+            products && products.map(product => (
+               <ProductCard key={product.id} product={product} />
             ))
          }
       </div>
