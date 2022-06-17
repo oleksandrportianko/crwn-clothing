@@ -1,43 +1,29 @@
-import { createContext, useState } from "react";
-
-const processingAddingToCart = (cartItems, item) => {
-   let newCartItems = cartItems.filter(cartItem => cartItem.id !== item.id);
-   console.log('newCartItems in start', newCartItems);
-   const currentProduct = cartItems.find((cartItem) => cartItem.id === item.id);
-   console.log('currentProduct', currentProduct);
-   if (currentProduct) {
-      newCartItems.push({
-         ...item,
-         quantity: currentProduct.quantity + 1,
-      })
-   } else {
-      newCartItems.push({
-         ...item,
-         quantity: 1,
-      })
-   }
-
-   console.log('newCartItems in end', newCartItems);
-   return newCartItems;
-}
+import { createContext, useEffect, useState } from "react";
+import { processingAddingToCart } from "../utils/helpers/processingAddingToCart";
+import { sumOfItemsArray } from "../utils/helpers/sumOfAllArrayItems";
 
 export const CartContext = createContext({
    isOpenCart: false,
    setIsOpenCart: () => null,
    cartItems: [],
    addItemToCart: () => null,
+   amountOfItems: 0,
 })
 
 export const CartProvider = ({ children }) => {
    const [isOpenCart, setIsOpenCart] = useState(false);
    const [cartItems, setCartItems] = useState([]);
+   const [amountOfItems, setAmountOfItems] = useState(0);
+
+   useEffect(() => {
+      setAmountOfItems(sumOfItemsArray(cartItems));
+   }, [cartItems])
 
    const addItemToCart = (item) => {
-      console.log(item)
       setCartItems(processingAddingToCart(cartItems, item))
    }
 
-   const value = { isOpenCart, setIsOpenCart, cartItems, addItemToCart }
+   const value = { isOpenCart, setIsOpenCart, cartItems, addItemToCart, amountOfItems }
 
 
    return <CartContext.Provider value={value}>{children}</CartContext.Provider>

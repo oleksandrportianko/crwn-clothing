@@ -4,7 +4,7 @@ import shoppingBug from '../../assets/shopping-bug.svg'
 import './CartIcon.scss'
 
 const CartIcon = () => {
-   const { isOpenCart, setIsOpenCart } = useContext(CartContext)
+   const { isOpenCart, setIsOpenCart, amountOfItems } = useContext(CartContext)
 
    const toggleOpenCart = () => {
       setIsOpenCart(!isOpenCart)
@@ -13,7 +13,7 @@ const CartIcon = () => {
    return (
       <div className='cart-icon-container' onClick={toggleOpenCart}>
          <img src={shoppingBug} className="shopping-icon" alt="Shopping bug" />
-         <span className='item-count'>0</span>
+         <span className='item-count'>{amountOfItems}</span>
       </div>
    )
 }
