@@ -2,6 +2,7 @@ import React, { Fragment, useContext } from 'react'
 import { Link } from 'react-router-dom'
 import { UserContext } from '../../contexts/UserContext'
 import { signOutUser } from '../../utils/firebase/firebase'
+import { CartContext } from '../../contexts/CartContext'
 import CartDropdown from '../cart-dropdown/CartDropdown'
 import CartIcon from '../cart-icon/CartIcon'
 import logoSvg from '../../assets/logo.svg'
@@ -9,6 +10,7 @@ import './Navigation.scss'
 
 const Navigation = () => {
    const { currentUser } = useContext(UserContext)
+   const { isOpenCart } = useContext(CartContext)
 
    return (
       <Fragment>
@@ -26,7 +28,7 @@ const Navigation = () => {
                }
                <CartIcon />
             </div>
-            <CartDropdown />
+            { isOpenCart && <CartDropdown /> } 
          </div>
       </Fragment>
    )
