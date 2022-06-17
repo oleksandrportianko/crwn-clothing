@@ -4,6 +4,7 @@ import HomePage from './pages/home/HomePage'
 import Navigation from './components/navigation/Navigation'
 import AuthenticationPage from './pages/authentication/AuthenticationPage'
 import ShopPage from './pages/shop/ShopPage'
+import CheckoutPage from './pages/checkout/CheckoutPage'
 
 const App = () => {
    return (
@@ -15,6 +16,7 @@ const App = () => {
             <Route path='/' element={<HomePage />} />
             <Route path='/auth' element={<AuthenticationPage />} />
             <Route path='/shop' element={<ShopPage />} />
+            <Route path='/checkout' element={<CheckoutPage />} />
          </Routes>
       </Fragment>
    )
