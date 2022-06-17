@@ -11,12 +11,16 @@ const CheckoutPage = () => {
       totalSum += currentProductSum; 
    }
 
-   const decQuality = (item) => {
-      const newCartArray = cartItems.map((cartItem) => cartItem.id === item.id ? { ...cartItem, quantity: cartItem.quantity - 1 } : cartItem)
-      setCartItems(newCartArray)
+   const decQuantity = (item) => {
+      if (item.quantity < 2) {
+         removeItem(item)
+      } else {
+         const newCartArray = cartItems.map((cartItem) => cartItem.id === item.id ? { ...cartItem, quantity: cartItem.quantity - 1 } : cartItem)
+         setCartItems(newCartArray)
+      }
    }
 
-   const incQuality = (item) => {
+   const incQuantity = (item) => {
       const newCartArray = cartItems.map((cartItem) => cartItem.id === item.id ? { ...cartItem, quantity: cartItem.quantity + 1 } : cartItem)
       setCartItems(newCartArray)
    }
@@ -41,8 +45,8 @@ const CheckoutPage = () => {
                   return (
                      <div key={item.id}>
                         <span>{item.name}</span>
-                        <button onClick={() => decQuality(item)}>Dec</button>
-                        <button onClick={() => incQuality(item)}>Inc</button>
+                        <button onClick={() => decQuantity(item)}>Dec</button>
+                        <button onClick={() => incQuantity(item)}>Inc</button>
                         <span>{item.quantity} x {item.price}</span>
                         <button onClick={() => removeItem(item)}>remove</button>
                      </div>
