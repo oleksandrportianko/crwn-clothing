@@ -1,5 +1,5 @@
 import { createContext, useState, useEffect } from "react";
-import { addToCollectionAndDocument } from "../utils/firebase/firebase.js";
+import { getCategoriesAndDocuments } from "../utils/firebase/firebase.js";
 
 export const ProductsContext = createContext({
    products: null,
@@ -8,6 +8,15 @@ export const ProductsContext = createContext({
 
 export const ProductsProvider = ({ children }) => {
    const [products, setProducts] = useState([]);
+
+   useEffect(() => {
+      const getCategoriesMap = async () => {
+         const result = await getCategoriesAndDocuments()
+         console.log(result)
+      }
+      
+      getCategoriesMap()
+   }, [])
 
    const value = { products, setProducts }
 
