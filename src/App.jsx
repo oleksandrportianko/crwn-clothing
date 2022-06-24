@@ -15,7 +15,7 @@ const App = () => {
          <Routes>
             <Route path='/' element={<HomePage />} />
             <Route path='/auth' element={<AuthenticationPage />} />
-            <Route path='/shop' element={<ShopPage />} />
+            <Route path='/shop/*' element={<ShopPage />} />
             <Route path='/checkout' element={<CheckoutPage />} />
          </Routes>
       </Fragment>
