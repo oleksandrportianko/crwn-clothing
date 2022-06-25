@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState, Fragment } from 'react'
 import { useParams } from 'react-router-dom'
 import { CategoriesContext } from '../../contexts/CategoriesContext'
 import ProductCard from '../product-card/ProductCard'
@@ -14,6 +14,8 @@ const Category = () => {
    }, [category, categoriesMap])
 
    return (
+      <Fragment>
+      <h2 className='category-title'>{category}</h2>
       <div className='category-container'>
          {
             products && products.map((product) => (
@@ -21,6 +23,7 @@ const Category = () => {
             ))
          }
       </div>
+      </Fragment>
    )
 }
 
