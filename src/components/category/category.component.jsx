@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom'
 
 import { CategoriesContext } from '../../contexts/CategoriesContext'
 
-import ProductCard from '../product-card/ProductCard'
+import ProductCard from '../product-card/product-card.component'
 
 import { CategoryContainer, CategoryTitle } from './category.styles'
 

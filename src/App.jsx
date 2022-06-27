@@ -1,10 +1,10 @@
 import React, { Fragment } from 'react'
 import { Route, Routes } from 'react-router-dom'
-import HomePage from './pages/home/HomePage'
+import HomePage from './pages/home/home-page.component'
 import Navigation from './components/navigation/navigation.component'
-import AuthenticationPage from './pages/authentication/AuthenticationPage'
-import ShopPage from './pages/shop/ShopPage'
-import CheckoutPage from './pages/checkout/CheckoutPage'
+import AuthenticationPage from './pages/authentication/authentication-page.component'
+import ShopPage from './pages/shop/shop-page.component'
+import CheckoutPage from './pages/checkout/checkout-page.component'
 
 const App = () => {
    return (
