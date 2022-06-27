@@ -1,6 +1,14 @@
 import styled from 'styled-components'
 import Button from '../button/button.component'
 
+export const ButtonContainer = styled(Button)`
+   width: 80%;
+   opacity: 0.7;
+   position: absolute;
+   top: 255px;
+   display: none;
+`
+
 export const ProductCardContainer = styled.div`
    width: 100%;
    display: flex;
@@ -8,6 +16,13 @@ export const ProductCardContainer = styled.div`
    height: 350px;
    align-items: center;
    position: relative;
+
+   &:hover {
+      ${ButtonContainer} {
+         opacity: 0.85;
+         display: flex;
+      }
+   }
 `
 
 export const Image = styled.img`
@@ -18,18 +33,6 @@ export const Image = styled.img`
 
    &:hover {
       opacity: 0.8;
-   }
-`
-   
-export const ButtonConatiner = styled(Button)`
-   width: 80%;
-   opacity: 0.7;
-   position: absolute;
-   top: 255px;
-
-   &:hover {
-      opacity: 0.85;
-      display: flex;
    }
 `
  

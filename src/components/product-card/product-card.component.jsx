@@ -4,7 +4,7 @@ import { buttonVariables } from '../../utils/variables/defaultVariables';
 
 import { CartContext } from '../../contexts/CartContext';
 
-import { ProductCardContainer, Image, Footer, Name, Price, ButtonConatiner } from './product-card.styles'
+import { ProductCardContainer, Image, Footer, Name, Price, ButtonContainer } from './product-card.styles'
 
 const ProductCard = ({ product }) => {
    const { addItemToCart } = useContext(CartContext)
@@ -19,7 +19,7 @@ const ProductCard = ({ product }) => {
             <Name>{name}</Name>
             <Price>{price}</Price>
          </Footer>
-         <ButtonConatiner onClick={addItemCart} buttonType={buttonVariables.base}>Add to card</ButtonConatiner>
+         <ButtonContainer onClick={addItemCart} buttonType={buttonVariables.base}>Add to card</ButtonContainer>
       </ProductCardContainer>
    )
 }
