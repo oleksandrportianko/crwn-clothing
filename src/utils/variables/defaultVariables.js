@@ -11,6 +11,7 @@ export const defaultFormSignInFields = {
 }
 
 export const buttonVariables = {
+   base: 'base',
    google: 'google-sign-in',
    inverted: 'inverted'
 }

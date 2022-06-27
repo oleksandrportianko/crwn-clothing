@@ -1,5 +1,4 @@
 import styled from 'styled-components'
-import Button from '../button/Button'
 
 export const CartDropdownContainer = styled.div`
    position: absolute;
@@ -27,6 +26,6 @@ export const CartItems = styled.div`
    overflow: auto;
 `
 
-export const ButtonContainer = styled(Button)`
-   margin-top: auto;
-`
+//  export const ButtonContainer = styled(Button)`
+//    margin-top: auto;
+// `

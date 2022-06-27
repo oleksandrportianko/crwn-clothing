@@ -1,10 +1,10 @@
 import React, { useContext } from 'react'
 
+import { buttonVariables } from '../../utils/variables/defaultVariables';
+
 import { CartContext } from '../../contexts/CartContext';
 
-import Button from '../button/Button';
-
-import { ProductCardContainer, Image, Footer, Name, Price } from './product-card.styles'
+import { ProductCardContainer, Image, Footer, Name, Price, ButtonConatiner } from './product-card.styles'
 
 const ProductCard = ({ product }) => {
    const { addItemToCart } = useContext(CartContext)
@@ -19,7 +19,7 @@ const ProductCard = ({ product }) => {
             <Name>{name}</Name>
             <Price>{price}</Price>
          </Footer>
-         <Button onClick={addItemCart} buttonType='inversed'>Add to card</Button>
+         <ButtonConatiner onClick={addItemCart} buttonType={buttonVariables.base}>Add to card</ButtonConatiner>
       </ProductCardContainer>
    )
 }

@@ -1,12 +1,12 @@
 import React, { useState } from 'react'
 
-import { defaultFormSignInFields } from '../../utils/variables/defaultVariables'
+import { defaultFormSignInFields, buttonVariables } from '../../utils/variables/defaultVariables'
 
 import { signInWithGooglePopup, signInAuthWithEmailAndPassword } from '../../utils/firebase/firebase'
 
 import FormInput from '../form-input/form-input.component'
 
-import Button from '../button/Button'
+import Button from '../button/button.component'
 
 import { SignInContainer, Title, ButtonsContainer } from './sign-in-form.styles'
 
@@ -55,8 +55,8 @@ const SignInForm = () => {
             <FormInput label='Email' type="email" onChange={changeValue} required value={email} name='email' />
             <FormInput label='Password' type="password" onChange={changeValue} required value={password} name='password' />
             <ButtonsContainer>
-               <Button type='submit'>Sign in</Button>
-               <Button type='button' buttonType='google' onClick={signInWithGoogle} >Google sign in</Button>
+               <Button buttonType={buttonVariables.base} type='submit'>Sign in</Button>
+               <Button type='button' buttonType={buttonVariables.google} onClick={signInWithGoogle} >Google sign in</Button>
             </ButtonsContainer>
          </form>
       </SignInContainer>

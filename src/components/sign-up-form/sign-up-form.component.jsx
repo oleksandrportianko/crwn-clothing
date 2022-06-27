@@ -1,13 +1,13 @@
 import React, { useState, useContext } from 'react'
 
-import { defaultFormSignUpFields } from '../../utils/variables/defaultVariables'
+import { defaultFormSignUpFields, buttonVariables } from '../../utils/variables/defaultVariables'
 
 import { createDocumentUserFromAuth, userAuthCreatedWithEmailAndPassword } from '../../utils/firebase/firebase'
 
 import { UserContext } from '../../contexts/UserContext'
 
 import FormInput from '../form-input/form-input.component'
-import Button from '../button/Button'
+import Button from '../button/button.component'
 
 import { SignUpContainer, Title } from './sign-up-form.styles'
 
@@ -49,7 +49,7 @@ const SignUpForm = () => {
             <FormInput label='Email' type="email" onChange={changeValue} required value={email} name='email' />
             <FormInput label='Password' type="password" onChange={changeValue} required value={password} name='password' />
             <FormInput label='Confirm password' type="password" onChange={changeValue} required value={confirmPassword} name='confirmPassword' />
-            <Button type='submit'>Sign up</Button>
+            <Button buttonType={buttonVariables.base} type='submit'>Sign up</Button>
          </form>
       </SignUpContainer>
    )

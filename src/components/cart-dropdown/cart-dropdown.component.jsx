@@ -1,9 +1,11 @@
 import React, { useContext } from 'react'
 import { useNavigate } from 'react-router-dom'
 
+import { buttonVariables } from '../../utils/variables/defaultVariables'
+
 import { CartContext } from '../../contexts/CartContext'
 
-import Button from '../button/Button'
+import Button from '../button/button.component'
 import CartItem from '../cart-item/cart-item.component'
 
 import { CartDropdownContainer, CartItems } from './cart-dropdown.styles'
@@ -26,7 +28,7 @@ const CartDropdown = () => {
                ))
             }
          </CartItems>
-         <Button onClick={redirectToCheckout} >Go to checkout</Button>
+         <Button buttonType={buttonVariables.base} onClick={redirectToCheckout} >Go to checkout</Button>
       </CartDropdownContainer>
    )
 }
