@@ -7,7 +7,7 @@ import { CartContext } from '../../contexts/CartContext'
 import { NavigationContainer, LogoContainer, NavLinksContainer, NavLink } from './navigation.styles.jsx'
 
 import CartDropdown from '../cart-dropdown/cart-dropdown.component'
-import CartIcon from '../cart-icon/CartIcon'
+import CartIcon from '../cart-icon/cart-icon.component'
 import logoSvg from '../../assets/logo.svg'
 
 const Navigation = () => {
