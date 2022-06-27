@@ -1,13 +1,12 @@
 import React, { Fragment, useContext } from 'react'
-import { Link } from 'react-router-dom'
 
 import { UserContext } from '../../contexts/UserContext'
 import { signOutUser } from '../../utils/firebase/firebase'
 import { CartContext } from '../../contexts/CartContext'
 
-import { NavigationContainer, LogoContainer, NavLinksContainer, NavLink } from './NavigationStyles.jsx'
+import { NavigationContainer, LogoContainer, NavLinksContainer, NavLink } from './navigation.styles.jsx'
 
-import CartDropdown from '../cart-dropdown/CartDropdown'
+import CartDropdown from '../cart-dropdown/cart-dropdown.component'
 import CartIcon from '../cart-icon/CartIcon'
 import logoSvg from '../../assets/logo.svg'
 

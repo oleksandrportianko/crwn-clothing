@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react'
 import { Route, Routes } from 'react-router-dom'
 import HomePage from './pages/home/HomePage'
-import Navigation from './components/navigation/Navigation'
+import Navigation from './components/navigation/navigation.component'
 import AuthenticationPage from './pages/authentication/AuthenticationPage'
 import ShopPage from './pages/shop/ShopPage'
 import CheckoutPage from './pages/checkout/CheckoutPage'
