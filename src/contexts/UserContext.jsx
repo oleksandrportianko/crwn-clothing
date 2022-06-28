@@ -12,7 +12,6 @@ export const UserProdiver = ({ children }) => {
 
    useEffect(() => {
       onAuthStateChangedListener((user) => {
-         console.log(user)
          if (user) {
             createDocumentUserFromAuth(user)
          }

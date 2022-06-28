@@ -3,7 +3,29 @@ import styled from 'styled-components'
 export const Group = styled.div`
    position: relative;
    margin: 45px 0;
+
+   input[type='password'] {
+      letter-spacing: 0.3em;
+   }
 `
+
+export const FormInputLabel = styled.label`
+   color: grey;
+   font-size: 16px;
+   font-weight: normal;
+   position: absolute;
+   pointer-events: none;
+   left: 5px;
+   top: 10px;
+   transition: 300ms ease all;
+
+   ${({shrink}) => shrink && `
+      top: -14px;
+      font-size: 12px;
+      color: black;
+   `}
+`
+
 export const FormInputContainer = styled.input`
    background: none;
    background-color: white;
@@ -21,25 +43,8 @@ export const FormInputContainer = styled.input`
      outline: none;
    }
 
-   &:focus ~ .form-input-label {
+   &:focus ~ ${FormInputLabel} {
      top: -14px;
      font-size: 12px;
      color: black;
-`
-
-export const FormInputLabel = styled.label`
-   color: grey;
-   font-size: 16px;
-   font-weight: normal;
-   position: absolute;
-   pointer-events: none;
-   left: 5px;
-   top: 10px;
-   transition: 300ms ease all;
-
-   &.shrink {
-      top: -14px;
-      font-size: 12px;
-      color: black;
-   }
 `
