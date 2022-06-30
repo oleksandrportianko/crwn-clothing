@@ -50,6 +50,7 @@ export const CartContext = createContext({
 })
 
 const SET_CART_ITEMS = 'SET-CART-ITEMS';
+const SET_IS_OPEN_CART = 'SET-IS-OPEN-CART';
 
 const INITIAL_STATE = {
    isOpenCart: false,
@@ -67,6 +68,11 @@ const cartReducer = (state, action) => {
             ...state,
             ...payload
          }
+      case SET_IS_OPEN_CART: 
+         return {
+            ...state,
+            isOpenCart: payload
+         }
       default:
          return {
             ...state
@@ -81,6 +87,10 @@ export const CartProvider = ({ children }) => {
       const sumOfItems = sumOfItemsArray(newCartItems)
       const countTotalCart = countOfTotalCartSum(newCartItems)
       dispatch({ type: SET_CART_ITEMS, payload: { cartItems: newCartItems, amountOfItems: sumOfItems, cartTotal: countTotalCart } })
+   }
+
+   const setIsOpenCart = (boolean) => {
+      dispatch({ type: SET_IS_OPEN_CART, payload: boolean })
    }
 
    const addItemToCart = (item) => {
@@ -98,7 +108,7 @@ export const CartProvider = ({ children }) => {
       setCartItemsReducer(newCartItems)
    }
 
-   const value = { isOpenCart, setIsOpenCart, cartItems, addItemToCart, amountOfItems, setCartItems, cartTotal, removeItemCart, removeQuantityFromCart }
+   const value = { isOpenCart, setIsOpenCart, cartItems, addItemToCart, amountOfItems, cartTotal, removeItemCart, removeQuantityFromCart }
 
 
    return <CartContext.Provider value={value}>{children}</CartContext.Provider>
