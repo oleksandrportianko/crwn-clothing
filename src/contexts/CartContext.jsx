@@ -1,4 +1,4 @@
-import { createContext, useEffect, useState, useReducer } from "react";
+import { createContext, useReducer } from "react";
 
 const countOfTotalCartSum = (cartItems) => {
    const countSum = cartItems.reduce(function (a, b) {
@@ -49,7 +49,7 @@ export const CartContext = createContext({
    removeItemCart: () => null,
 })
 
-const CART_IS_CHANGING = 'CART-IS-CHANGING';
+const SET_CART_ITEMS = 'SET-CART-ITEMS';
 
 const INITIAL_STATE = {
    isOpenCart: false,
@@ -62,7 +62,7 @@ const cartReducer = (state, action) => {
    const { type, payload } = action;
 
    switch(type) {
-      case CART_IS_CHANGING:
+      case SET_CART_ITEMS:
          return {
             ...state,
             ...payload
@@ -75,30 +75,27 @@ const cartReducer = (state, action) => {
 }
 
 export const CartProvider = ({ children }) => {
-   const [isOpenCart, setIsOpenCart] = useState(false);
-   const [cartItems, setCartItems] = useState([]);
-   const [amountOfItems, setAmountOfItems] = useState(0);
-   const [cartTotal, setCartTotal] = useState(0);
-   const { state, dispatch } = useReducer(cartReducer, INITIAL_STATE)
+   const [ { isOpenCart, cartItems, amountOfItems, cartTotal } , dispatch ] = useReducer(cartReducer, INITIAL_STATE)
 
-   useEffect(() => {
-      setAmountOfItems(sumOfItemsArray(cartItems));
-   }, [cartItems])
-
-   useEffect(() => {
-      setCartTotal(countOfTotalCartSum(cartItems))
-   }, [cartItems])
+   const setCartItemsReducer = (newCartItems) => {
+      const sumOfItems = sumOfItemsArray(newCartItems)
+      const countTotalCart = countOfTotalCartSum(newCartItems)
+      dispatch({ type: SET_CART_ITEMS, payload: { cartItems: newCartItems, amountOfItems: sumOfItems, cartTotal: countTotalCart } })
+   }
 
    const addItemToCart = (item) => {
-      setCartItems(processingAddingToCart(cartItems, item))
+      const newCartItems = processingAddingToCart(cartItems, item)
+      setCartItemsReducer(newCartItems)
    }
 
    const removeQuantityFromCart = (item) => {
-      setCartItems(processingRemoveFromCart(cartItems, item))
+      const newCartItems = processingRemoveFromCart(cartItems, item)
+      setCartItemsReducer(newCartItems)
    }
 
    const removeItemCart = (item) => {
-      setCartItems(removeItemFromCart(cartItems, item))
+      const newCartItems = removeItemFromCart(cartItems, item)
+      setCartItemsReducer(newCartItems)
    }
 
    const value = { isOpenCart, setIsOpenCart, cartItems, addItemToCart, amountOfItems, setCartItems, cartTotal, removeItemCart, removeQuantityFromCart }
