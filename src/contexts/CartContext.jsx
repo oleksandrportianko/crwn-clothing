@@ -1,4 +1,4 @@
-import { createContext, useEffect, useState } from "react";
+import { createContext, useEffect, useState, useReducer } from "react";
 
 const countOfTotalCartSum = (cartItems) => {
    const countSum = cartItems.reduce(function (a, b) {
@@ -49,11 +49,37 @@ export const CartContext = createContext({
    removeItemCart: () => null,
 })
 
+const CART_IS_CHANGING = 'CART-IS-CHANGING';
+
+const INITIAL_STATE = {
+   isOpenCart: false,
+   cartItems: [],
+   amountOfItems: 0,
+   cartTotal: 0,
+}
+
+const cartReducer = (state, action) => {
+   const { type, payload } = action;
+
+   switch(type) {
+      case CART_IS_CHANGING:
+         return {
+            ...state,
+            ...payload
+         }
+      default:
+         return {
+            ...state
+         }
+   }
+}
+
 export const CartProvider = ({ children }) => {
    const [isOpenCart, setIsOpenCart] = useState(false);
    const [cartItems, setCartItems] = useState([]);
    const [amountOfItems, setAmountOfItems] = useState(0);
    const [cartTotal, setCartTotal] = useState(0);
+   const { state, dispatch } = useReducer(cartReducer, INITIAL_STATE)
 
    useEffect(() => {
       setAmountOfItems(sumOfItemsArray(cartItems));
