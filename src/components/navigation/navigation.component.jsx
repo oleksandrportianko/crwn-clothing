@@ -1,6 +1,6 @@
 import React, { Fragment, useContext } from 'react'
+import { useSelector } from 'react-redux/es/exports'
 
-import { UserContext } from '../../contexts/UserContext'
 import { signOutUser } from '../../utils/firebase/firebase'
 import { CartContext } from '../../contexts/CartContext'
 
@@ -11,8 +11,9 @@ import CartIcon from '../cart-icon/cart-icon.component'
 import logoSvg from '../../assets/logo.svg'
 
 const Navigation = () => {
-   const { currentUser } = useContext(UserContext)
    const { isOpenCart } = useContext(CartContext)
+
+   const currentUser = useSelector((state) => state.user.currentUser)
 
    return (
       <Fragment>

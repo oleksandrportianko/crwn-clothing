@@ -37,15 +37,6 @@ export const UserProdiver = ({ children }) => {
    }
    
    const value = { currentUser, setCurrentUser }
-   
-   useEffect(() => {
-      onAuthStateChangedListener((user) => {
-         if (user) {
-            createDocumentUserFromAuth(user)
-         }
-         setCurrentUser(user)
-      })
-   }, [])
 
    return <UserContext.Provider value={value}>{children}</UserContext.Provider>
 } 
