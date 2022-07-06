@@ -6,7 +6,7 @@ import reportWebVitals from './reportWebVitals';
 
 import { CategoriesProvider } from './contexts/CategoriesContext';
 import { CartProvider } from './contexts/CartContext';
-import { store } from './redux/store';
+import store from './redux/store';
 
 import App from './App';
 

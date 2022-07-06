@@ -1,14 +1,15 @@
-import { configureStore } from '@reduxjs/toolkit'
-import { createLogger } from 'redux-logger'
-import thunk from 'redux-thunk'
+import { applyMiddleware, combineReducers, createStore } from 'redux';
+import logger from 'redux-logger'
+import thunkMiddlware from 'redux-thunk';
 
-import userReducer from './reducers/user.reducer'
+import { userReducer } from './reducers/user.reducer'
 
-const logger = createLogger();
+let reducers = combineReducers({
+   user: userReducer,
+});
 
-export const store = configureStore({
-   reducer: {
-      user: userReducer,
-   },
-   middleware: [thunk, logger]
-})
+let store = createStore(reducers, applyMiddleware(thunkMiddlware, logger));
+
+window.store = store;
+
+export default store;
