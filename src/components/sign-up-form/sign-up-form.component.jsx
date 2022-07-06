@@ -1,10 +1,9 @@
-import React, { useState, useContext } from 'react'
-
-import { defaultFormSignUpFields, buttonVariables } from '../../utils/variables/defaultVariables'
+import React, { useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 
 import { createDocumentUserFromAuth, userAuthCreatedWithEmailAndPassword } from '../../utils/firebase/firebase'
-
-import { UserContext } from '../../contexts/UserContext'
+import { defaultFormSignUpFields, buttonVariables } from '../../utils/variables/defaultVariables'
+import { setCurrentUser } from '../../redux/reducers/user.reducer'
 
 import FormInput from '../form-input/form-input.component'
 import Button from '../button/button.component'
@@ -14,7 +13,8 @@ import { SignUpContainer, Title } from './sign-up-form.styles'
 const SignUpForm = () => {
    const [formFields, setFormFields] = useState(defaultFormSignUpFields)
    const { displayName, email, password, confirmPassword } = formFields;
-   const { setCurrentUser } = useContext(UserContext)
+
+   const dispatch = useDispatch()
 
    const changeValue = (event) => {
       const { name, value } = event.target;
@@ -32,7 +32,7 @@ const SignUpForm = () => {
 
       try {
          const { user } = await userAuthCreatedWithEmailAndPassword(email, password)
-         setCurrentUser(user)
+         dispatch(setCurrentUser(user))
          await createDocumentUserFromAuth(user, { displayName })
          resetSignUpForm()
       } catch (error) {

@@ -1,4 +1,3 @@
-import { type } from '@testing-library/user-event/dist/type'
 import { createContext, useEffect, useReducer } from 'react'
 import { onAuthStateChangedListener, createDocumentUserFromAuth } from '../utils/firebase/firebase'
 
@@ -11,7 +10,6 @@ export const UserContext = createContext({
 
 const userReducer = (state, action) => {
    const { type, payload } = action;
-   console.log('in user reducer')
    
    switch(type) {
       case SET_USER_DATA:
@@ -31,7 +29,6 @@ const INITIAL_STATE = {
 }
 
 export const UserProdiver = ({ children }) => {
-   // const [currentUser, setCurrentUser] = useState(null)
    const [{currentUser}, dispatch] = useReducer(userReducer, INITIAL_STATE)
    console.log(currentUser)
 
