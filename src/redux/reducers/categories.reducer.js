@@ -1,7 +1,7 @@
 const SET_ALL_CATEGORIES = 'SET-ALL-CATEGORIES'
 
 const INITIAL_STATE = {
-   categoriesMap: [],
+   categoriesArray: [],
 }
 
 export const categoriesReducer = (state = INITIAL_STATE, action) => {
@@ -11,7 +11,7 @@ export const categoriesReducer = (state = INITIAL_STATE, action) => {
       case SET_ALL_CATEGORIES:
          return {
             ...state,
-            categoriesMap: payload
+            categoriesArray: payload
          }
       default:
          return state
