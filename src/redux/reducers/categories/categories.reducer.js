@@ -1,4 +1,4 @@
-const SET_ALL_CATEGORIES = 'SET-ALL-CATEGORIES'
+import { CATEGORIES_ACTION_TYPES } from './categories.types'
 
 const INITIAL_STATE = {
    categoriesArray: [],
@@ -8,7 +8,7 @@ export const categoriesReducer = (state = INITIAL_STATE, action) => {
    const { type, payload } = action;
 
    switch(type) {
-      case SET_ALL_CATEGORIES:
+      case CATEGORIES_ACTION_TYPES.SET_ALL_CATEGORIES:
          return {
             ...state,
             categoriesArray: payload
@@ -17,5 +17,3 @@ export const categoriesReducer = (state = INITIAL_STATE, action) => {
          return state
    }
 }
-
-export const setAllCategories = (data) => ({ type: SET_ALL_CATEGORIES, payload: data })

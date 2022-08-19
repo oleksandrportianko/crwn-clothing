@@ -1,14 +1,12 @@
 import React, { Fragment } from 'react'
 import { useSelector } from 'react-redux'
 
+import { selectCategoriesMap } from '../../redux/reducers/categories/categories.selector'
+
 import CategoryPreview from '../category-preview/category-preview.component'
 
 const CategoriesPreview = () => {
-   const categoriesArray = useSelector((state) => state.categories.categoriesArray.reduce((acc, docShapshot) => {
-      const { title, items } = docShapshot
-      acc[title.toLowerCase()] = items
-      return acc
-   }, {}))
+   const categoriesArray = useSelector(selectCategoriesMap)
 
    return (
       <Fragment>

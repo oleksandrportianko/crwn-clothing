@@ -9,7 +9,7 @@ import ShopPage from './pages/shop/shop-page.component'
 import CheckoutPage from './pages/checkout/checkout-page.component'
 
 import { createDocumentUserFromAuth, onAuthStateChangedListener } from './utils/firebase/firebase'
-import { setCurrentUser } from './redux/reducers/user.reducer'
+import { setCurrentUser } from './redux/reducers/user/user.action'
 
 const App = () => {
    const dispatch = useDispatch()

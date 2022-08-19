@@ -4,15 +4,17 @@ import { useSelector } from 'react-redux/es/exports'
 import { signOutUser } from '../../utils/firebase/firebase'
 import { CartContext } from '../../contexts/CartContext'
 
-import { NavigationContainer, LogoContainer, NavLinksContainer, NavLink } from './navigation.styles.jsx'
+import { selectCurrentUser } from '../../redux/reducers/user/user.selector'
 
 import CartDropdown from '../cart-dropdown/cart-dropdown.component'
 import CartIcon from '../cart-icon/cart-icon.component'
 import logoSvg from '../../assets/logo.svg'
 
+import { NavigationContainer, LogoContainer, NavLinksContainer, NavLink } from './navigation.styles.jsx'
+
 const Navigation = () => {
    const { isOpenCart } = useContext(CartContext)
-   const currentUser = useSelector((state) => state.user.currentUser)
+   const currentUser = useSelector(selectCurrentUser)
 
    return (
       <Fragment>

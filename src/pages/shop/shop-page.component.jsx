@@ -5,7 +5,7 @@ import { Routes, Route } from 'react-router-dom'
 import CategoriesPreview from '../../components/categories-preview/categories-preview.component'
 import Category from '../../components/category/category.component'
 
-import { setAllCategories } from '../../redux/reducers/categories.reducer'
+import { setAllCategories } from '../../redux/reducers/categories/categories.action'
 import { getCategoriesAndDocuments } from '../../utils/firebase/firebase'
 
 const ShopPage = () => {

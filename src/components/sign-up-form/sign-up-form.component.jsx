@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux'
 
 import { createDocumentUserFromAuth, userAuthCreatedWithEmailAndPassword } from '../../utils/firebase/firebase'
 import { defaultFormSignUpFields, buttonVariables } from '../../utils/variables/defaultVariables'
-import { setCurrentUser } from '../../redux/reducers/user.reducer'
+import { setCurrentUser } from '../../redux/reducers/user/user.action'
 
 import FormInput from '../form-input/form-input.component'
 import Button from '../button/button.component'
