@@ -1,5 +1,5 @@
 import { applyMiddleware, combineReducers, createStore } from 'redux';
-import logger from 'redux-logger'
+// import logger from 'redux-logger'
 import thunkMiddlware from 'redux-thunk';
 
 import { categoriesReducer } from './reducers/categories.reducer';
@@ -10,6 +10,20 @@ let reducers = combineReducers({
    categories: categoriesReducer,
 });
 
-let store = createStore(reducers, applyMiddleware(thunkMiddlware, logger));
+const loggerMiddlware = (state) => (next) => (action) => {
+   if (!action.type) {
+      return next(action)
+   }
+
+   console.log('type: ', action.type)
+   console.log('payload: ', action.payload)
+   console.log('currentState: ', state.getState())
+
+   next(action)
+
+   console.log('new state: ', state.getState())
+}
+
+let store = createStore(reducers, applyMiddleware(thunkMiddlware, loggerMiddlware));
 
 export default store;
