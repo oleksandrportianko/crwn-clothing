@@ -2,12 +2,14 @@ import { applyMiddleware, combineReducers, createStore } from 'redux';
 // import logger from 'redux-logger'
 import thunkMiddlware from 'redux-thunk';
 
+import { cartReducer } from './reducers/cart/cart.reducer';
 import { categoriesReducer } from './reducers/categories/categories.reducer';
 import { userReducer } from './reducers/user/user.reducer'
 
 let reducers = combineReducers({
    user: userReducer,
    categories: categoriesReducer,
+   cart: cartReducer,
 });
 
 const loggerMiddlware = (state) => (next) => (action) => {
