@@ -26,25 +26,26 @@ export const setCartItems = (data) => ({ type: CART_ACTION_TYPES.SET_CART_ITEMS,
     }
  }
 
- const setCartItemsReducer = (cartItems, newCartItems) => {
+export const setCartItemsReducer = (cartItems, newCartItems) => {
     return setCartItems(newCartItems)
  }
 
- const setIsOpenCart = (boolean) => {
-    return setCartItems(boolean)
+export const setIsOpenCart = (boolean) => {
+   console.log('bl', boolean)
+   return setCartItems(boolean)
  }
 
- const addItemToCart = (cartItems, item) => {
+export const addItemToCart = (cartItems, item) => {
     const newCartItems = processingAddingToCart(cartItems, item)
     return setCartItems(newCartItems)
  }
 
- const removeQuantityFromCart = (cartItems, item) => {
+export const removeQuantityFromCart = (cartItems, item) => {
     const newCartItems = processingRemoveFromCart(cartItems, item)
     return setCartItems(newCartItems)
  }
 
- const removeItemCart = (cartItems, item) => {
+export const removeItemCart = (cartItems, item) => {
     const newCartItems = removeItemFromCart(cartItems, item)
     return setCartItems(newCartItems)
  }

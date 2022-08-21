@@ -1,13 +1,12 @@
-import React, { useContext } from 'react'
+import React from 'react'
 
 import { buttonVariables } from '../../utils/variables/defaultVariables';
 
-import { CartContext } from '../../contexts/CartContext';
+import { addItemToCart } from '../../redux/reducers/cart/cart.action';
 
 import { ProductCardContainer, Image, Footer, Name, Price, ButtonContainer } from './product-card.styles'
 
 const ProductCard = ({ product }) => {
-   const { addItemToCart } = useContext(CartContext)
    const { name, price, imageUrl } = product;
 
    const addItemCart = () => addItemToCart(product)

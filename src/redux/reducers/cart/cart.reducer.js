@@ -15,6 +15,7 @@ export const cartReducer = (state = INITIAL_STATE, action) => {
                 cartItems: payload,
             }
         case CART_ACTION_TYPES.SET_IS_OPEN_CART:
+            console.log('here 2')
             return {
                 ...state,
                 isOpenCart: payload

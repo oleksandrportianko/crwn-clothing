@@ -1,12 +1,11 @@
-import React, { useContext } from 'react'
+import React from 'react'
 
-import { CartContext } from '../../contexts/CartContext'
+import { addItemToCart, removeItemCart, removeQuantityFromCart } from '../../redux/reducers/cart/cart.action';
 
 import { CheckoutItemContainer, ImageContainer, Image, Name, Value, Quantity, Price, Arrow, RemoveButton } from './checkout-item.styles'
 
 const CheckoutItem = ({ cartItem }) => {
    const { name, price, imageUrl, quantity } = cartItem;
-   const { removeQuantityFromCart, addItemToCart, removeItemCart } = useContext(CartContext);
 
    const decQuantity = () => removeQuantityFromCart(cartItem)
 
