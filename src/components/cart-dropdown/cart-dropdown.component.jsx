@@ -1,6 +1,6 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
-import { useSelector } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
 
 import { buttonVariables } from '../../utils/variables/defaultVariables'
 
@@ -14,11 +14,13 @@ import { CartDropdownContainer, CartItems, EmptyMessage } from './cart-dropdown.
 
 const CartDropdown = () => {
    const cartItems = useSelector(selectCartItems)
-   let navigate = useNavigate()
+
+   const navigate = useNavigate()
+   const dispatch = useDispatch()
 
    const redirectToCheckout = () => {
       navigate('/checkout')
-      setIsOpenCart(false)
+      dispatch(setIsOpenCart(false))
    }
 
    return (

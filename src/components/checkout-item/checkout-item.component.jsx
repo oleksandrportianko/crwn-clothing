@@ -1,17 +1,26 @@
 import React from 'react'
+import { useSelector } from 'react-redux/es/exports';
 
 import { addItemToCart, removeItemCart, removeQuantityFromCart } from '../../redux/reducers/cart/cart.action';
+import { selectCartItems } from '../../redux/reducers/cart/cart.selector';
 
 import { CheckoutItemContainer, ImageContainer, Image, Name, Value, Quantity, Price, Arrow, RemoveButton } from './checkout-item.styles'
 
 const CheckoutItem = ({ cartItem }) => {
    const { name, price, imageUrl, quantity } = cartItem;
+   const cartItems = useSelector(selectCartItems)
 
-   const decQuantity = () => removeQuantityFromCart(cartItem)
+   const decQuantity = () => {
+      removeQuantityFromCart(cartItems, cartItem)
+   }
 
-   const incQuantity = () => addItemToCart(cartItem)
+   const incQuantity = () => { 
+      addItemToCart(cartItems, cartItem) 
+   }
 
-   const removeItem = () => removeItemCart(cartItem)
+   const removeItem = () => {
+      removeItemCart(cartItems, cartItem)
+   }
 
    return (
       <CheckoutItemContainer>

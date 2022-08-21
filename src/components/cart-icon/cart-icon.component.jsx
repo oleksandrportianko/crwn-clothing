@@ -1,5 +1,5 @@
 import React from 'react'
-import { useSelector } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
 
 import { selectIsOpenCart, selectSumItemsArray } from '../../redux/reducers/cart/cart.selector'
 import { setIsOpenCart } from '../../redux/reducers/cart/cart.action'
@@ -12,8 +12,10 @@ const CartIcon = () => {
    const isOpenCart = useSelector(selectIsOpenCart)
    const amountOfItems = useSelector(selectSumItemsArray)
 
+   const dispatch = useDispatch()
+
    const toggleOpenCart = () => {
-      setIsOpenCart(!isOpenCart)
+      dispatch(setIsOpenCart(!isOpenCart))
    }
 
    return (
