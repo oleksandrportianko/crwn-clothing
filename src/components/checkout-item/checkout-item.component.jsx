@@ -1,5 +1,5 @@
 import React from 'react'
-import { useSelector } from 'react-redux/es/exports';
+import { useSelector, useDispatch } from 'react-redux/es/exports';
 
 import { addItemToCart, removeItemCart, removeQuantityFromCart } from '../../redux/reducers/cart/cart.action';
 import { selectCartItems } from '../../redux/reducers/cart/cart.selector';
@@ -10,16 +10,18 @@ const CheckoutItem = ({ cartItem }) => {
    const { name, price, imageUrl, quantity } = cartItem;
    const cartItems = useSelector(selectCartItems)
 
+   const dispatch = useDispatch()
+
    const decQuantity = () => {
-      removeQuantityFromCart(cartItems, cartItem)
+      dispatch(removeQuantityFromCart(cartItems, cartItem))
    }
 
    const incQuantity = () => { 
-      addItemToCart(cartItems, cartItem) 
+      dispatch(addItemToCart(cartItems, cartItem)) 
    }
 
    const removeItem = () => {
-      removeItemCart(cartItems, cartItem)
+      dispatch(removeItemCart(cartItems, cartItem))
    }
 
    return (
