@@ -21,8 +21,6 @@ export const cartReducer = (state = INITIAL_STATE, action) => {
                 isOpenCart: payload
             }
         default:
-            return {
-                ...state
-            }
+            return state
     }
 }

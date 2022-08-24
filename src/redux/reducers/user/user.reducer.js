@@ -14,8 +14,6 @@ export const userReducer = (state = INITIAL_STATE, action) => {
             currentUser: payload
          }
       default:
-         return {
-            ...state
-         }
+         return state
    }
 }
