@@ -1,10 +1,12 @@
-import { SpinnerOverlay, SpinnerContainer } from './spinner.styles'
+import { SpinnerOverlay, SpinnerContainer, SpinnerBlock } from './spinner.styles'
 
 const Spinner = () => {
     return (
-        <SpinnerContainer>
-            <SpinnerOverlay />
-        </SpinnerContainer>
+        <SpinnerBlock>
+            <SpinnerContainer>
+                <SpinnerOverlay />
+            </SpinnerContainer>
+        </SpinnerBlock>
     )
 }
 
