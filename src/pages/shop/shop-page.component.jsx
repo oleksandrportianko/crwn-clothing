@@ -5,19 +5,13 @@ import { Routes, Route } from 'react-router-dom'
 import CategoriesPreview from '../../components/categories-preview/categories-preview.component'
 import Category from '../../components/category/category.component'
 
-import { setAllCategories } from '../../redux/reducers/categories/categories.action'
-import { getCategoriesAndDocuments } from '../../utils/firebase/firebase'
+import { fetchCategoriesAsync} from '../../redux/reducers/categories/categories.action'
 
 const ShopPage = () => {
    const dispatch = useDispatch()
 
    useEffect(() => {
-      const getCategories = async () => {
-         const categories = await getCategoriesAndDocuments()
-         dispatch(setAllCategories(categories))
-      }
-
-      getCategories()
+      dispatch(fetchCategoriesAsync())
    }, [dispatch])
 
    return (
