@@ -1,18 +1,12 @@
-import { applyMiddleware, combineReducers, legacy_createStore as createStore } from 'redux';
-import thunkMiddlware from 'redux-thunk';
+import { applyMiddleware, legacy_createStore as createStore } from 'redux';
+// import thunkMiddlware from 'redux-thunk';
 import { persistReducer, persistStore } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
-
-import { cartReducer } from './reducers/cart/cart.reducer';
-import { categoriesReducer } from './reducers/categories/categories.reducer';
-import { userReducer } from './reducers/user/user.reducer'
 import logger from 'redux-logger'
+import createSagaMiddleware from '@redux-saga/core';
 
-let reducers = combineReducers({
-   user: userReducer,
-   categories: categoriesReducer,
-   cart: cartReducer,
-});
+import { rootReducer } from './root.reducer';
+import { rootSaga } from './root-saga'
 
 const persistConfig = {
    key: 'root',
@@ -20,12 +14,16 @@ const persistConfig = {
    whitelist: ['cart'],
 };
 
-const persistedReducer = persistReducer(persistConfig, reducers)
+const sagaMiddleware = createSagaMiddleware() 
+
+const persistedReducer = persistReducer(persistConfig, rootReducer)
 
 const loggerMiddlware = [process.env.NODE_ENV === 'development' && logger].filter(Boolean) 
 
-let store = createStore(persistedReducer, applyMiddleware(thunkMiddlware, ...loggerMiddlware));
+let store = createStore(persistedReducer, applyMiddleware(sagaMiddleware, ...loggerMiddlware));
 
 export default store;
+
+sagaMiddleware.run(rootSaga)
 
 export const persistor = persistStore(store);
