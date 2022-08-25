@@ -1,32 +1,36 @@
-import React, {useEffect, useState, Fragment } from 'react'
+import React, { useEffect, useState, Fragment } from 'react'
 import { useParams } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 
 import ProductCard from '../product-card/product-card.component'
+import Spinner from '../spinner/spinner.component'
 
-import { selectCategoriesMap } from '../../redux/reducers/categories/categories.selector'
+import { selectCategoriesIsLoading, selectCategoriesMap } from '../../redux/reducers/categories/categories.selector'
 
 import { CategoryContainer, CategoryTitle } from './category.styles'
 
 const Category = () => {
    const { category } = useParams()
    const categoriesMap = useSelector(selectCategoriesMap)
+   const isLoading = useSelector(selectCategoriesIsLoading)
    const [products, setProducts] = useState(categoriesMap[category])
-   
+
    useEffect(() => {
       setProducts(categoriesMap[category])
    }, [category, categoriesMap])
 
    return (
       <Fragment>
-      <CategoryTitle>{category}</CategoryTitle>
-      <CategoryContainer>
-         {
-            products && products.map((product) => (
-               <ProductCard key={product.id} product={product} />
-            ))
+         <CategoryTitle>{category}</CategoryTitle>
+         {isLoading ? <Spinner /> :
+            <CategoryContainer>
+               {
+                  products && products.map((product) => (
+                     <ProductCard key={product.id} product={product} />
+                  ))
+               }
+            </CategoryContainer>
          }
-      </CategoryContainer>
       </Fragment>
    )
 }
