@@ -5,13 +5,13 @@ import { Routes, Route } from 'react-router-dom'
 import CategoriesPreview from '../../components/categories-preview/categories-preview.component'
 import Category from '../../components/category/category.component'
 
-import { fetchCategoriesAsync} from '../../redux/reducers/categories/categories.action'
+import { fetchCategoriesStart} from '../../redux/reducers/categories/categories.action'
 
 const ShopPage = () => {
    const dispatch = useDispatch()
 
    useEffect(() => {
-      dispatch(fetchCategoriesAsync())
+      dispatch(fetchCategoriesStart())
    }, [dispatch])
 
    return (
