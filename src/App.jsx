@@ -8,19 +8,13 @@ import AuthenticationPage from './pages/authentication/authentication-page.compo
 import ShopPage from './pages/shop/shop-page.component'
 import CheckoutPage from './pages/checkout/checkout-page.component'
 
-import { createDocumentUserFromAuth, onAuthStateChangedListener } from './utils/firebase/firebase'
-import { setCurrentUser } from './redux/reducers/user/user.action'
+import { chechUserSession } from './redux/reducers/user/user.action'
 
 const App = () => {
    const dispatch = useDispatch()
 
    useEffect(() => {
-      onAuthStateChangedListener((user) => {
-         if (user) {
-            createDocumentUserFromAuth(user)
-         }
-         dispatch(setCurrentUser(user))
-      })
+      dispatch(chechUserSession())
    }, [dispatch])
 
    return (
