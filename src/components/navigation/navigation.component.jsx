@@ -17,6 +17,10 @@ const Navigation = () => {
    const currentUser = useSelector(selectCurrentUser)
    const isOpenCart = useSelector(selectIsOpenCart)
 
+   const signOutUserHandle = () => {
+      signOutUser()
+   }
+
    return (
       <Fragment>
          <NavigationContainer>
@@ -26,8 +30,8 @@ const Navigation = () => {
             <NavLinksContainer>
                <NavLink to='/shop'>Shop</NavLink>
                {
-                  currentUser ?
-                     <NavLink as='span' onClick={signOutUser}>Sign out</NavLink>
+                  currentUser.id ?
+                     <NavLink as='span' onClick={signOutUserHandle}>Sign out</NavLink>
                      :
                      <NavLink className='nav-link' to='/auth'>Sign in</NavLink>
                }
