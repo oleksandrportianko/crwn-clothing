@@ -1,9 +1,8 @@
 import React, { useState } from 'react'
 import { useDispatch } from 'react-redux'
 
-import { createDocumentUserFromAuth, userAuthCreatedWithEmailAndPassword } from '../../utils/firebase/firebase'
 import { defaultFormSignUpFields, buttonVariables } from '../../utils/variables/defaultVariables'
-import { setCurrentUser } from '../../redux/reducers/user/user.action'
+import { signUpStart } from '../../redux/reducers/user/user.action'
 
 import FormInput from '../form-input/form-input.component'
 import Button from '../button/button.component'
@@ -31,9 +30,7 @@ const SignUpForm = () => {
       if (password !== confirmPassword) return;
 
       try {
-         const { user } = await userAuthCreatedWithEmailAndPassword(email, password)
-         dispatch(setCurrentUser(user))
-         await createDocumentUserFromAuth(user, { displayName })
+         dispatch(signUpStart(email, password, displayName))
          resetSignUpForm()
       } catch (error) {
          console.log(error.message)
