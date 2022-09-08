@@ -1,10 +1,10 @@
 import React, { Fragment } from 'react'
-import { useSelector } from 'react-redux/es/exports'
-
-import { signOutUser } from '../../utils/firebase/firebase'
+import { useDispatch, useSelector } from 'react-redux/es/exports'
 
 import { selectCurrentUser } from '../../redux/reducers/user/user.selector'
 import { selectIsOpenCart } from '../../redux/reducers/cart/cart.selector'
+
+import { signOutStart } from '../../redux/reducers/user/user.action'
 
 import CartDropdown from '../cart-dropdown/cart-dropdown.component'
 import CartIcon from '../cart-icon/cart-icon.component'
@@ -17,8 +17,10 @@ const Navigation = () => {
    const currentUser = useSelector(selectCurrentUser)
    const isOpenCart = useSelector(selectIsOpenCart)
 
+   const dispatch = useDispatch()
+
    const signOutUserHandle = () => {
-      signOutUser()
+      dispatch(signOutStart())
    }
 
    return (

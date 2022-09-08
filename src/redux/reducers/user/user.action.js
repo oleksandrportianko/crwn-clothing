@@ -17,3 +17,9 @@ export const signUpStart = (email, password, displayName) => ({ type: USER_ACTIO
 export const signUpSuccess = (user, additionalDetails) => ({ type: USER_ACTION_TYPES.SIGN_UP_SUCCESS, payload: { user, additionalDetails } })
 
 export const signUpError = (error) => ({ type: USER_ACTION_TYPES.SIGN_UP_ERROR, payload: error })
+
+export const signOutStart = () => ({ type: USER_ACTION_TYPES.SIGN_OUT_START })
+
+export const signOutSuccess = () => ({ type: USER_ACTION_TYPES.SIGN_OUT_SUCCESS })
+
+export const signOutError = (error) => ({ type: USER_ACTION_TYPES.SIGN_OUT_ERROR, payload: error })
