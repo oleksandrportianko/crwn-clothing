@@ -2,7 +2,7 @@ import React from 'react'
 
 import { buttonVariables } from '../../utils/variables/defaultVariables'
 
-import { BaseButton, GoogleSignInButton, InvertedButton } from './button.styles'
+import { BaseButton, GoogleSignInButton, InvertedButton, PaymentSpinner } from './button.styles'
 
 const getButton = (buttonType = buttonVariables.base) => (
    {
@@ -12,11 +12,13 @@ const getButton = (buttonType = buttonVariables.base) => (
    }[buttonType]
 )
 
-const Button = ({ children , buttonType, ...otherProps }) => {
+const Button = ({ children, isLoading, buttonType, ...otherProps }) => {
    const CurrentButton = getButton(buttonType)
 
    return (
-      <CurrentButton {...otherProps}>{children}</CurrentButton>
+      <CurrentButton disabled={isLoading} {...otherProps}>
+         { isLoading ? <PaymentSpinner /> : children}
+      </CurrentButton>
    )
 }
 
