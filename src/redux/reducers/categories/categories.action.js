@@ -1,4 +1,4 @@
-import CATEGORIES_ACTION_TYPES from './categories.types'
+import { CATEGORIES_ACTION_TYPES } from "./categories.types"
 
 export const fetchCategoriesStart = () => ({ type: CATEGORIES_ACTION_TYPES.FETCH_CATEGORIES_START })
 
