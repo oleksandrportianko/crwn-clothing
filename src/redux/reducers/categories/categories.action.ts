@@ -1,9 +1,15 @@
+import { ActionWithPayload, Action } from './../../../utils/createAction/createAction';
 import { createAction } from "../../../utils/createAction/createAction"
 import { Category } from '../../../types'
 import { CATEGORIES_ACTION_TYPES } from "./categories.types"
 
-export const fetchCategoriesStart = () => createAction(CATEGORIES_ACTION_TYPES.FETCH_CATEGORIES_START)
+export type FetchCategoriesStart = Action<CATEGORIES_ACTION_TYPES.FETCH_CATEGORIES_START>
+export type FetchCategoriesSuccess = ActionWithPayload<CATEGORIES_ACTION_TYPES.FETCH_CATEGORIES_SUCCESS, Category[]>
+export type FetchCategoriesFailed = ActionWithPayload<CATEGORIES_ACTION_TYPES.FETCH_CATEGORIES_ERROR, string>
+export type CategoriesAction = FetchCategoriesStart | FetchCategoriesSuccess | FetchCategoriesFailed
 
-export const fetchCategoriesSuccess = (categoriesData: Category[]) => createAction(CATEGORIES_ACTION_TYPES.FETCH_CATEGORIES_SUCCESS, categoriesData)
+export const fetchCategoriesStart = (): FetchCategoriesStart => createAction(CATEGORIES_ACTION_TYPES.FETCH_CATEGORIES_START)
 
-export const fetchCategoriesFailed = (error: string) => createAction(CATEGORIES_ACTION_TYPES.FETCH_CATEGORIES_ERROR, error)
+export const fetchCategoriesSuccess = (categoriesData: Category[]): FetchCategoriesSuccess => createAction(CATEGORIES_ACTION_TYPES.FETCH_CATEGORIES_SUCCESS, categoriesData)
+
+export const fetchCategoriesFailed = (error: string): FetchCategoriesFailed => createAction(CATEGORIES_ACTION_TYPES.FETCH_CATEGORIES_ERROR, error)
