@@ -1,7 +1,7 @@
 import { ActionWithPayload, Action } from './../../../utils/createAction/createAction';
 import { createAction } from "../../../utils/createAction/createAction"
-import { Category } from '../../../types'
 import { CATEGORIES_ACTION_TYPES } from "./categories.types"
+import { Category } from '../../../types'
 
 export type FetchCategoriesStart = Action<CATEGORIES_ACTION_TYPES.FETCH_CATEGORIES_START>
 export type FetchCategoriesSuccess = ActionWithPayload<CATEGORIES_ACTION_TYPES.FETCH_CATEGORIES_SUCCESS, Category[]>

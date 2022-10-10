@@ -1,7 +1,6 @@
 import { initializeApp } from "firebase/app";
 import { signInWithPopup, getAuth, GoogleAuthProvider, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, onAuthStateChanged } from 'firebase/auth'
 import { getFirestore, doc, getDoc, setDoc, collection, writeBatch, getDocs, query } from 'firebase/firestore'
-import { Category, CategoryItem } from "../../types";
 
 const firebaseConfig = {
   apiKey: "AIzaSyAIgpCzIGb_-EkWFT4GqwtRlXdoa2eKhnA",
@@ -37,7 +36,7 @@ export const addToCollectionAndDocument = async (collectionKey, objectToAdd) => 
    await batch.commit();
 }
 
-export const getCategoriesAndDocuments = async (): Promise<Category[]> => {
+export const getCategoriesAndDocuments = async () => {
    const collectionRef = collection(db, 'categories')
    const q = query(collectionRef)
 
