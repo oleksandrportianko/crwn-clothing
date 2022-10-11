@@ -1,3 +1,10 @@
+import { AnyAction } from "redux"
+
+export type Matchable<AC extends () => AnyAction> = AC & {
+    type: ReturnType<AC>['type'],
+    match(action: AnyAction): action is ReturnType<AC>
+}
+
 export type Category = {
     title: string,
     imageUrl: string,
