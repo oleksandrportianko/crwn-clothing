@@ -1,13 +1,4 @@
-import { AnyAction } from "redux"
-
-export type ActionWithPayload<T, P> = {
-    type: T,
-    payload: P,
-}
-
-export type Action<T> = {
-    type: T,
-}
+import { ActionWithPayload, Action } from "../../types"
 
 export function createAction<T extends string, P>(type: T, payload: P): ActionWithPayload<T, P>
 
