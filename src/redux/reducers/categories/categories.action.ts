@@ -1,4 +1,4 @@
-import { ActionWithPayload, Action } from './../../../utils/createAction/createAction';
+import { ActionWithPayload, Action } from './../../../types';
 import { createAction } from "../../../utils/createAction/createAction"
 import { CATEGORIES_ACTION_TYPES } from "./categories.types"
 
