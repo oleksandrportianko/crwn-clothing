@@ -36,6 +36,12 @@ export type CategoryItem = {
     price: number,
 }
 
+export type UserState = {
+    readonly currentUser: UserData | null,
+    readonly isLoading: boolean,
+    error: Error | null,
+}
+
 export type CategoriesState = {
     readonly categoriesArray: Category[],
     readonly isLoading: boolean,
