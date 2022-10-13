@@ -8,10 +8,10 @@ export type FetchCategoriesStart = Action<CATEGORIES_ACTION_TYPES.FETCH_CATEGORI
 
 export type FetchCategoriesSuccess = ActionWithPayload<CATEGORIES_ACTION_TYPES.FETCH_CATEGORIES_SUCCESS, Category[]>
 
-export type FetchCategoriesFailed = ActionWithPayload<CATEGORIES_ACTION_TYPES.FETCH_CATEGORIES_ERROR, string>
+export type FetchCategoriesFailed = ActionWithPayload<CATEGORIES_ACTION_TYPES.FETCH_CATEGORIES_ERROR, Error>
 
 export const fetchCategoriesStart = withMatch((): FetchCategoriesStart => createAction(CATEGORIES_ACTION_TYPES.FETCH_CATEGORIES_START))
 
 export const fetchCategoriesSuccess = withMatch((categoriesData: Category[]): FetchCategoriesSuccess => createAction(CATEGORIES_ACTION_TYPES.FETCH_CATEGORIES_SUCCESS, categoriesData))
 
-export const fetchCategoriesFailed = withMatch((error: string): FetchCategoriesFailed => createAction(CATEGORIES_ACTION_TYPES.FETCH_CATEGORIES_ERROR, error))
+export const fetchCategoriesFailed = withMatch((error: Error): FetchCategoriesFailed => createAction(CATEGORIES_ACTION_TYPES.FETCH_CATEGORIES_ERROR, error))
