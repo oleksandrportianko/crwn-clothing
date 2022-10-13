@@ -1,4 +1,8 @@
-export const loggerMiddlware = (state) => (next) => (action) => {
+import { Middleware } from "redux"
+
+import { RootState } from "../store"
+
+export const loggerMiddlware: Middleware<{}, RootState> = (state) => (next) => (action) => {
     if (!action.type) {
         return next(action)
     }
