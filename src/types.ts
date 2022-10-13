@@ -1,5 +1,10 @@
 import { AnyAction } from "redux"
 
+export type Credentials = {
+    email: string,
+    password: string,
+}
+
 export type UserData = {
     createdAt: Date,
     displayName: string,
