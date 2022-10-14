@@ -1,5 +1,25 @@
 import { AnyAction } from "redux"
 
+export type CategoryPreviewProps = {
+    title: string,
+    products: ProductItem[],
+}
+
+export type ProductItem = {
+    id: number,
+    name: string,
+    price: number,
+    imageUrl: string,
+}
+
+export type CartItemProps = {
+    id: number,
+    name: string,
+    price: number,
+    imageUrl: string,
+    quantity: number,
+}
+
 export type Credentials = {
     email: string,
     password: string,
@@ -27,6 +47,13 @@ export type Category = {
     title: string,
     imageUrl: string,
     items: CategoryItem[],
+    route: string,
+}
+
+export type CategoryWithoutItems = {
+    title: string,
+    imageUrl: string,
+    route: string,
 }
 
 export type CategoryItem = {

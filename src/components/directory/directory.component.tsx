@@ -1,10 +1,15 @@
-import React from 'react'
-
 import DirectoryItem from '../directory-item/directory-item.component'
 
 import { DirectoryContainer } from './directory.styles'
 
-const categories = [
+type Category = {
+   id: number,
+   title: string,
+   imageUrl: string,
+   route: string,
+}
+
+const categories: Category[] = [
    {
       "id": 1,
       "title": "Hats",

@@ -21,11 +21,8 @@ export const EmptyMessage = styled.span`
 
 export const CartItems = styled.div`
    height: 250px;
+   margin-bottom: 10px;
    display: flex;
    flex-direction: column;
    overflow: auto;
 `
-
-//  export const ButtonContainer = styled(Button)`
-//    margin-top: auto;
-// `

@@ -1,8 +1,10 @@
 import ProductCard from '../product-card/product-card.component'
 
+import { CategoryPreviewProps } from '../../types'
+
 import { CategoryPreviewContainer, Title, Preview } from './category-preview.styles'
 
-const CategoryPreview = ({ title, products }) => {
+const CategoryPreview = ({ title, products }: CategoryPreviewProps) => {
    return (
       <CategoryPreviewContainer>
          <h2>

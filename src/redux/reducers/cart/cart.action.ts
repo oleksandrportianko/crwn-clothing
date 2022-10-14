@@ -42,7 +42,7 @@ export const setIsOpenCart = (boolean: boolean) => {
    return setCartIsOpen(boolean)
 }
 
-export const addItemToCart = (cartItems: CartItem[], item: CartItem) => {
+export const addItemToCart = (cartItems: CartItem[], item: CategoryItem) => {
    const newCartItems = processingAddingToCart(cartItems, item)
    return setCartItems(newCartItems)
 }
