@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import { useState, ChangeEvent, FormEvent } from 'react'
 import { useDispatch } from 'react-redux'
 
 import { defaultFormSignUpFields, buttonVariables } from '../../utils/variables/defaultVariables'
@@ -15,7 +15,7 @@ const SignUpForm = () => {
 
    const dispatch = useDispatch()
 
-   const changeValue = (event) => {
+   const changeValue = (event: ChangeEvent<HTMLInputElement>) => {
       const { name, value } = event.target;
       setFormFields({ ...formFields, [name]: value })
    }
@@ -24,7 +24,7 @@ const SignUpForm = () => {
       setFormFields(defaultFormSignUpFields)
    }
 
-   const submitSignUpForm = async (event) => {
+   const submitSignUpForm = async (event: FormEvent<HTMLFormElement>) => {
       event.preventDefault();
 
       if (password !== confirmPassword) return;
@@ -33,7 +33,7 @@ const SignUpForm = () => {
          dispatch(signUpStart(email, password, displayName))
          resetSignUpForm()
       } catch (error) {
-         console.log(error.message)
+         console.log(error)
       }
    }
 
