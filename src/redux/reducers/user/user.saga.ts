@@ -5,7 +5,7 @@ import { USER_ACTION_TYPES } from './user.types'
 
 import { createDocumentUserFromAuth, getCurrentUser, signInAuthWithEmailAndPassword, signInWithGooglePopup, signOutUser, userAuthCreatedWithEmailAndPassword } from '../../../utils/firebase/firebase'
 
-import { signInError, signInSuccess, signOutError, signOutSuccess, signUpError, signUpSuccess, EmailSignInStart } from './user.action'
+import { signInError, signInSuccess, signOutError, signOutSuccess, signUpError, signUpSuccess, EmailSignInStart, SignUpStart, SignUpSuccess } from './user.action'
 
 import { AdditionalInformation } from '../../../types'
 
@@ -51,12 +51,16 @@ export function* isUserAuthenticated() {
     }
 }
 
-export function* signUp({ payload: { email, password, displayName } }) {
+export function* signUp({ payload: { email, password, displayName } }: SignUpStart) {
     try {
-        const { user } = yield* call(userAuthCreatedWithEmailAndPassword, email, password)
-        yield* put(signUpSuccess(user, { displayName }))
+        const userCredentials = yield* call(userAuthCreatedWithEmailAndPassword, email, password)
+        
+        if (userCredentials) {
+            const { user } = userCredentials
+            yield* put(signUpSuccess(user, { displayName }))
+        }
     } catch(error) {
-        yield* put(signUpError(error))
+        yield* put(signUpError(error as Error))
     }
 }
 
@@ -65,11 +69,11 @@ export function* signOut() {
         yield* call(signOutUser)
         yield* put(signOutSuccess())
     } catch (error) {
-        yield* put(signOutError(error))
+        yield* put(signOutError(error as Error))
     }
 }
 
-export function* signInAfterSignUp({ payload: {user, additionalDetails} }) {
+export function* signInAfterSignUp({ payload: {user, additionalDetails} }: SignUpSuccess) {
     yield* call(getSnapshotFromUserAuth, user, additionalDetails)
 }
 
