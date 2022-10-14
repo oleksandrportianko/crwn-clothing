@@ -11,7 +11,7 @@ import CartIcon from '../cart-icon/cart-icon.component'
 
 import logoSvg from '../../assets/logo.svg'
 
-import { NavigationContainer, LogoContainer, NavLinksContainer, NavLink } from './navigation.styles.jsx'
+import { NavigationContainer, LogoContainer, NavLinksContainer, NavLink } from './navigation.styles'
 
 const Navigation = () => {
    const currentUser = useSelector(selectCurrentUser)
