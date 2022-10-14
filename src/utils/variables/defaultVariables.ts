@@ -10,8 +10,8 @@ export const defaultFormSignInFields = {
    password: '',
 }
 
-export const buttonVariables = {
-   base: 'base',
-   google: 'google-sign-in',
-   inverted: 'inverted'
+export enum buttonVariables {
+   base = 'base',
+   google = 'google-sign-in',
+   inverted = 'inverted',
 }

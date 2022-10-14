@@ -1,10 +1,10 @@
-import React from 'react'
+import { FC, ButtonHTMLAttributes } from 'react'
 
 import { buttonVariables } from '../../utils/variables/defaultVariables'
 
 import { BaseButton, GoogleSignInButton, InvertedButton, PaymentSpinner } from './button.styles'
 
-const getButton = (buttonType = buttonVariables.base) => (
+const getButton = (buttonType = buttonVariables.base): typeof BaseButton => (
    {
       [buttonVariables.base]: BaseButton,
       [buttonVariables.google]: GoogleSignInButton,
@@ -12,7 +12,12 @@ const getButton = (buttonType = buttonVariables.base) => (
    }[buttonType]
 )
 
-const Button = ({ children, isLoading, buttonType, ...otherProps }) => {
+export type ButtonProps = {
+   buttonType?: buttonVariables,
+   isLoading?: boolean,
+} & ButtonHTMLAttributes<HTMLButtonElement>
+
+const Button: FC<ButtonProps> = ({ children, isLoading, buttonType, ...otherProps }) => {
    const CurrentButton = getButton(buttonType)
 
    return (
