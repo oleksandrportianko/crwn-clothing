@@ -7,6 +7,10 @@ export const ButtonContainer = styled(Button)`
    position: absolute;
    top: 255px;
    display: none;
+
+   @media screen and (max-width: 1100px) {
+      padding: 0 10px 0 10px;
+   }
 `
 
 export const ProductCardContainer = styled.div`
@@ -22,6 +26,11 @@ export const ProductCardContainer = styled.div`
          opacity: 0.85;
          display: flex;
       }
+   }
+
+   @media screen and (max-width: 800px) {
+      max-width: 300px;
+      min-width: 150px;
    }
 `
 

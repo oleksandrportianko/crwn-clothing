@@ -24,6 +24,10 @@ export const DirectoryItemBody = styled.div`
    background-color: white;
    opacity: 0.7;
    position: absolute;
+
+   @media screen and (max-width: 800px) {
+      padding: 0 10px;
+   }
 `
 
 export const DirectoryitemContainer = styled.div`
@@ -64,6 +68,10 @@ export const Title = styled.h2`
    font-size: 22px;
    color: #4a4a4a;
    text-transform: uppercase;
+
+   @media screen and (max-width: 800px) {
+      font-size: 18px;
+   }
 `
 
 export const Label = styled.span`

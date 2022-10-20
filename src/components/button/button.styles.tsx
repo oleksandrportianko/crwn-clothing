@@ -27,9 +27,9 @@ export const BaseButton = styled.button`
    align-items: center;
 
    &:hover {
-   background-color: white;
-   color: black;
-   border: 1px solid black;
+      background-color: white;
+      color: black;
+      border: 1px solid black;
    }
 `
 

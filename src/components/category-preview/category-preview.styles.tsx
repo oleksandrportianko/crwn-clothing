@@ -6,6 +6,10 @@ export const CategoryPreviewContainer = styled.div`
    display: flex;
    flex-direction: column;
    margin-bottom: 30px;
+
+   @media screen and (max-width: 800px) {
+      margin-bottom: 15px;
+   }
 `
 
 export const Title = styled(Link)`
