@@ -6,6 +6,8 @@ import Spinner from './components/spinner/spinner.component'
 
 import { chechUserSession } from './redux/reducers/user/user.action'
 
+import { GlobalStyles } from './global.styles'
+
 const HomePage = lazy(() => import("./pages/home/home-page.component"))
 const CheckoutPage = lazy(() => import('./pages/checkout/checkout-page.component'))
 const ShopPage = lazy(() => import('./pages/shop/shop-page.component'))
@@ -21,6 +23,7 @@ const App = () => {
 
    return (
       <Suspense fallback={<Spinner />}>
+         <GlobalStyles />
          <Fragment>
             <div className='app-navigation'>
                <Navigation />
